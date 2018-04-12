@@ -7,10 +7,7 @@
 package org.mule.runtime.api.component.location;
 
 import org.mule.api.annotation.NoImplement;
-import org.mule.runtime.api.component.ComponentIdentifier;
-import org.mule.runtime.api.component.TypedComponentIdentifier;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -42,12 +39,7 @@ import java.util.Optional;
  * @since 1.0
  */
 @NoImplement
-public interface ComponentLocation {
-
-  /**
-   * @return the unique absolute path of the component in the application.
-   */
-  String getLocation();
+public interface ComponentLocation extends BaseLocation {
 
   /**
    * @return the config file of the application where this component is defined, if it was defined in a config file.
@@ -59,17 +51,6 @@ public interface ComponentLocation {
    *         file.
    */
   Optional<Integer> getLineInFile();
-
-  /**
-   * @return the list of parts for the location. The location starts with the global element containing the component and
-   *         continues with the next elements within the global element until the last part which is the component specific part.
-   */
-  List<LocationPart> getParts();
-
-  /**
-   * @return the {@link ComponentIdentifier} of the component associated with this location
-   */
-  TypedComponentIdentifier getComponentIdentifier();
 
   /**
    * Gets the name of the root containing element.
