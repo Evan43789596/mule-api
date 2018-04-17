@@ -7,9 +7,41 @@
 package org.mule.runtime.api.artifact.semantic;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface Artifact {
+import org.mule.runtime.api.artifact.sintax.ArtifactDefinition;
 
-  List<GlobalComponent> getGlobalComponent();
+public class Artifact {
 
+  private Optional<ArtifactDefinition> artifactDefinition;
+  private List<Component> globalComponents;
+
+  public static ArtifactBuilder builder() {
+    return new ArtifactBuilder();
+  }
+
+  public static final class ArtifactBuilder {
+
+    private Optional<ArtifactDefinition> artifactDefinition;
+    private List<Component> globalComponents;
+
+    private ArtifactBuilder() {}
+
+    public ArtifactBuilder withArtifactDefinition(Optional<ArtifactDefinition> artifactDefinition) {
+      this.artifactDefinition = artifactDefinition;
+      return this;
+    }
+
+    public ArtifactBuilder withGlobalComponents(List<Component> globalComponents) {
+      this.globalComponents = globalComponents;
+      return this;
+    }
+
+    public Artifact build() {
+      Artifact artifact = new Artifact();
+      artifact.artifactDefinition = this.artifactDefinition;
+      artifact.globalComponents = this.globalComponents;
+      return artifact;
+    }
+  }
 }

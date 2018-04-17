@@ -6,10 +6,9 @@
  */
 package org.mule.runtime.api.component.location;
 
-import org.mule.runtime.api.component.TypedComponentIdentifier;
-
 import java.util.List;
-import java.util.Optional;
+
+import org.mule.runtime.api.component.TypedComponentIdentifier;
 
 public interface BaseLocation {
 
@@ -17,8 +16,6 @@ public interface BaseLocation {
    * @return the unique absolute path of the component in the application.
    */
   String getLocation();
-
-  Optional<SourceCodeLocation> getSourceCodeLocation();
 
   /**
    * @return the list of parts for the location. The location starts with the global element containing the component and
