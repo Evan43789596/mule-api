@@ -6,6 +6,39 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
-public interface Source extends Component {
+import org.mule.runtime.api.meta.model.source.SourceModel;
 
+public class Source extends Component {
+
+  private SourceModel model;
+
+  public SourceModel getModel() {
+    return model;
+  }
+
+  public static Source.SourceBuilder builder() {
+    return new Source.SourceBuilder();
+  }
+
+  public static class SourceBuilder extends Component.ComponentBuilder<Source.SourceBuilder, Source> {
+
+    private SourceModel sourceModel;
+
+    private SourceBuilder() {}
+
+    protected Source newInstance() {
+      return new Source();
+    }
+
+    public Source.SourceBuilder withSourceModel(SourceModel sourceModel) {
+      this.sourceModel = sourceModel;
+      return this;
+    }
+
+    public Source build() {
+      Source source = super.build();
+      source.model = sourceModel;
+      return source;
+    }
+  }
 }

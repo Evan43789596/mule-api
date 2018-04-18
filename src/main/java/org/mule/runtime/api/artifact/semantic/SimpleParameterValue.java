@@ -6,16 +6,16 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
-public interface SimpleParameterValue extends ParameterValue {
-
-  boolean isLiteral();
-
-  boolean isExpression();
-
-  boolean isPlaceholder();
-
-  boolean containsPlaceholder();
-
-  String getRawValue();
+public class SimpleParameterValue extends ParameterValue {
+  //
+  // boolean isLiteral();
+  //
+  // boolean isExpression();
+  //
+  // boolean isPlaceholder();
+  //
+  // boolean containsPlaceholder();
+  //
+  // String getRawValue();
 
 }

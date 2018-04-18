@@ -6,6 +6,42 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
-public interface Construct extends Component {
+import org.mule.runtime.api.meta.model.construct.ConstructModel;
+
+public class Construct extends ComplexComponent {
+
+  private ConstructModel model;
+
+  public ConstructModel getModel() {
+    return model;
+  }
+
+  public static ConstructBuilder builder() {
+    return new ConstructBuilder();
+  }
+
+  public static class ConstructBuilder extends ComplexComponent.ComplexComponentBuilder<ConstructBuilder, Construct> {
+
+    private ConstructModel model;
+
+    private ConstructBuilder() {}
+
+    public ConstructBuilder withModel(ConstructModel constructModel) {
+      this.model = constructModel;
+      return this;
+    }
+
+    @Override
+    protected Construct newInstance() {
+      return new Construct();
+    }
+
+    @Override
+    public Construct build() {
+      Construct construct = super.build();
+      construct.model = this.model;
+      return construct;
+    }
+  }
 
 }

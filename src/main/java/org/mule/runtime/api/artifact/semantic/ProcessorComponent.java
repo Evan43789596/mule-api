@@ -6,8 +6,7 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
-public interface GlobalComponent extends Component {
-
-
+public class ProcessorComponent extends Component
+{
 
 }

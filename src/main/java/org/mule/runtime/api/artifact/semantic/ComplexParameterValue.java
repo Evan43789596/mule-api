@@ -6,16 +6,14 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
-import java.util.List;
-
-public interface ComplexParameterValue extends ParameterValue {
-
-  List<ParameterValue> getParameterValues();
-
-  /**
-   * @return an ordered list of complex parameters as defined in the DSL
-   */
-  List<ComplexParameterValue> getComplexParameterValues();
+public class ComplexParameterValue extends ParameterValue {
+  //
+  // List<ParameterValue> getParameterValues();
+  //
+  /// **
+  // * @return an ordered list of complex parameters as defined in the DSL
+  // */
+  // List<ComplexParameterValue> getComplexParameterValues();
 
 
 }
