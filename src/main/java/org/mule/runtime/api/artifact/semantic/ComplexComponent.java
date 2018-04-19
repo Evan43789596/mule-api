@@ -23,6 +23,16 @@ public abstract class ComplexComponent extends ProcessorComponent {
 
     List<Component> processorComponents;
 
+    public ComplexComponentBuilder withProcessorComponents(List<Component> processorComponents) {
+      this.processorComponents.addAll(processorComponents);
+      return this;
+    }
+
+    public ComplexComponentBuilder withProcessorComponent(Component processorComponent) {
+      this.processorComponents.add(processorComponent);
+      return this;
+    }
+
     public BuilderType build() {
       BuilderType complexComponent = super.build();
       complexComponent.processorComponents = this.processorComponents;

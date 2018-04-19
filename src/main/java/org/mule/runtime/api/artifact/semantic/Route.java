@@ -6,8 +6,6 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
-import java.util.List;
-
 import org.mule.runtime.api.meta.model.nested.NestedRouteModel;
 
 public class Route extends ComplexComponent {
@@ -30,16 +28,6 @@ public class Route extends ComplexComponent {
 
     public RouteBuilder withModel(NestedRouteModel routeModel) {
       this.model = routeModel;
-      return this;
-    }
-
-    public ComplexComponentBuilder withProcessorComponents(List<Component> processorComponents) {
-      this.processorComponents.addAll(processorComponents);
-      return this;
-    }
-
-    public ComplexComponentBuilder withProcessorComponent(Component processorComponent) {
-      this.processorComponents.add(processorComponent);
       return this;
     }
 
