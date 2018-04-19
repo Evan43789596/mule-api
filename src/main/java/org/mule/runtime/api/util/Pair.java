@@ -37,6 +37,16 @@ public final class Pair<K, V> implements Serializable {
    * @param first The first element of this pair
    * @param second The second element of this pair
    */
+  public static <K, V> Pair of(K first, V second) {
+    return new Pair(first, second);
+  }
+
+  /**
+   * Creates a new pair
+   *
+   * @param first The first element of this pair
+   * @param second The second element of this pair
+   */
   public Pair(K first, V second) {
     this.first = first;
     this.second = second;

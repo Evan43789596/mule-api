@@ -40,7 +40,7 @@ public abstract class Component implements HasParameters {
     protected abstract BuilderType newInstance();
 
     public T withParameters(List<Parameter> parameters) {
-      parameters.addAll(parameters);
+      this.parameters.addAll(parameters);
       return (T) this;
     }
 

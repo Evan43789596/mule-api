@@ -6,6 +6,7 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ComplexComponent extends ProcessorComponent {
@@ -21,7 +22,7 @@ public abstract class ComplexComponent extends ProcessorComponent {
   public static abstract class ComplexComponentBuilder<T extends ComplexComponentBuilder, BuilderType extends ComplexComponent>
       extends Component.ComponentBuilder<T, BuilderType> {
 
-    List<Component> processorComponents;
+    List<Component> processorComponents = new ArrayList<>();
 
     public ComplexComponentBuilder withProcessorComponents(List<Component> processorComponents) {
       this.processorComponents.addAll(processorComponents);

@@ -6,13 +6,21 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
-import org.mule.runtime.api.artifact.sintax.ParameterDefinition;
+import org.mule.runtime.api.artifact.sintax.ParameterValueDefinition;
 import org.mule.runtime.api.component.location.BaseLocation;
 
 public class ParameterValue {
 
-  private ParameterDefinition parameterDefinition;
+  private ParameterValueDefinition parameterValueDefinition;
   private BaseLocation location;
+
+  public ParameterValueDefinition getParameterValueDefinition() {
+    return parameterValueDefinition;
+  }
+
+  public BaseLocation getLocation() {
+    return location;
+  }
 
   public static ParameterValueBuilder builder() {
     return new ParameterValueBuilder();
@@ -20,13 +28,13 @@ public class ParameterValue {
 
   public static final class ParameterValueBuilder {
 
-    private ParameterDefinition parameterDefinition;
+    private ParameterValueDefinition parameterValueDefinition;
     private BaseLocation location;
 
     private ParameterValueBuilder() {}
 
-    public ParameterValueBuilder withParameterDefinition(ParameterDefinition parameterDefinition) {
-      this.parameterDefinition = parameterDefinition;
+    public ParameterValueBuilder withParameterValueDefinition(ParameterValueDefinition parameterValueDefinition) {
+      this.parameterValueDefinition = parameterValueDefinition;
       return this;
     }
 
@@ -37,7 +45,7 @@ public class ParameterValue {
 
     public ParameterValue build() {
       ParameterValue parameterValue = new ParameterValue();
-      parameterValue.parameterDefinition = this.parameterDefinition;
+      parameterValue.parameterValueDefinition = this.parameterValueDefinition;
       parameterValue.location = this.location;
       return parameterValue;
     }
