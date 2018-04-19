@@ -6,7 +6,17 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
+import java.util.List;
+
+import org.mule.runtime.api.meta.model.nested.NestedRouteModel;
+
 public class Route extends ComplexComponent {
+
+  private NestedRouteModel model;
+
+  public NestedRouteModel getModel() {
+    return model;
+  }
 
   public static RouteBuilder builder() {
     return new RouteBuilder();
@@ -14,11 +24,35 @@ public class Route extends ComplexComponent {
 
   public static class RouteBuilder extends ComplexComponent.ComplexComponentBuilder<Route.RouteBuilder, Route> {
 
+    private NestedRouteModel model;
+
     private RouteBuilder() {}
+
+    public RouteBuilder withModel(NestedRouteModel routeModel) {
+      this.model = routeModel;
+      return this;
+    }
+
+    public ComplexComponentBuilder withProcessorComponents(List<Component> processorComponents) {
+      this.processorComponents.addAll(processorComponents);
+      return this;
+    }
+
+    public ComplexComponentBuilder withProcessorComponent(Component processorComponent) {
+      this.processorComponents.add(processorComponent);
+      return this;
+    }
 
     @Override
     public Route newInstance() {
       return new Route();
+    }
+
+    @Override
+    public Route build() {
+      Route route = super.build();
+      route.model = this.model;
+      return route;
     }
   }
 

@@ -6,28 +6,33 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.mule.runtime.api.meta.model.nested.NestedChainModel;
 
 public class Chain extends ComplexComponent {
 
-  List<ProcessorComponent> processorComponents;
+  private NestedChainModel chainModel;
 
-  public List<ProcessorComponent> getProcessorComponents() {
-    return processorComponents;
+  public NestedChainModel getChainModel() {
+    return chainModel;
   }
 
   public static abstract class ChainBuilder extends Component.ComponentBuilder<ChainBuilder, Chain> {
 
-    List<ProcessorComponent> processorComponents = new ArrayList<>();
+    private NestedChainModel chainModel;
 
-    public ChainBuilder setProcessorComponents(List<ProcessorComponent> processorComponents) {
-      this.processorComponents.addAll(processorComponents);
+    public ChainBuilder withModel(NestedChainModel chainModel) {
+      this.chainModel = chainModel;
       return this;
+    }
+
+    @Override
+    protected Chain newInstance() {
+      return new Chain();
     }
 
     public Chain build() {
       Chain chain = super.build();
+      chain.chainModel = this.chainModel;
       return chain;
     }
   }

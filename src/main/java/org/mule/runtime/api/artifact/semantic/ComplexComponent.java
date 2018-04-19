@@ -6,46 +6,26 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
-import static java.util.Collections.emptyList;
-
 import java.util.List;
-import java.util.Optional;
 
 public abstract class ComplexComponent extends ProcessorComponent {
 
-  Chain chain;
-  List<Route> routes = emptyList();
+  List<Component> processorComponents;
+
+  public List<Component> getProcessorComponents() {
+    return processorComponents;
+  }
 
   ComplexComponent() {}
-
-  public Optional<Chain> getChain() {
-    return Optional.of(chain);
-  }
-
-  public List<Route> getRoutes() {
-    return routes;
-  }
 
   public static abstract class ComplexComponentBuilder<T extends ComplexComponentBuilder, BuilderType extends ComplexComponent>
       extends Component.ComponentBuilder<T, BuilderType> {
 
-    private Chain chain;
-    private List<Route> routes = emptyList();
-
-    public ComplexComponentBuilder withChain(Chain chain) {
-      this.chain = chain;
-      return this;
-    }
-
-    public ComplexComponentBuilder withRoutes(List<Route> routes) {
-      this.routes = routes;
-      return this;
-    }
+    List<Component> processorComponents;
 
     public BuilderType build() {
       BuilderType complexComponent = super.build();
-      complexComponent.chain = this.chain;
-      complexComponent.routes = this.routes;
+      complexComponent.processorComponents = this.processorComponents;
       return complexComponent;
     }
   }
