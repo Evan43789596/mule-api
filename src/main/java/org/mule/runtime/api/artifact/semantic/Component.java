@@ -12,6 +12,7 @@ import java.util.List;
 import org.mule.runtime.api.artifact.sintax.ComponentDefinition;
 import org.mule.runtime.api.component.location.ComponentLocation;
 
+//TODO remove HasParameters from this component
 public abstract class Component implements HasParameters {
 
   List<Parameter> parameters;

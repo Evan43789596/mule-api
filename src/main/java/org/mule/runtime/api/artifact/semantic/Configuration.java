@@ -6,6 +6,10 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
+import static java.util.Optional.of;
+
+import java.util.Optional;
+
 import org.mule.runtime.api.meta.model.config.ConfigurationModel;
 
 public class Configuration extends Component {
@@ -15,18 +19,30 @@ public class Configuration extends Component {
   }
 
   private ConfigurationModel model;
+  private ConnectionProvider connectionProvider;
 
   public ConfigurationModel getModel() {
     return model;
+  }
+
+  public Optional<ConnectionProvider> getConnectionProvider() {
+    return of(connectionProvider);
   }
 
   public static class ConfigurationBuilder
       extends Component.ComponentBuilder<ConfigurationBuilder, Configuration> {
 
     private ConfigurationModel model;
+    private ConnectionProvider connectionProvider;
 
     public ConfigurationBuilder withModel(ConfigurationModel model) {
       this.model = model;
+      return this;
+    }
+
+
+    public ConfigurationBuilder withConnectionProvider(ConnectionProvider connectionProvider) {
+      this.connectionProvider = connectionProvider;
       return this;
     }
 
@@ -36,9 +52,10 @@ public class Configuration extends Component {
     }
 
     public Configuration build() {
-      Configuration complexComponent = super.build();
-      complexComponent.model = this.model;
-      return complexComponent;
+      Configuration configuration = super.build();
+      configuration.model = this.model;
+      configuration.connectionProvider = this.connectionProvider;
+      return configuration;
     }
   }
 

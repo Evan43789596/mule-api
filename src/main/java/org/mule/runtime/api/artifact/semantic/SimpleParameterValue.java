@@ -6,16 +6,44 @@
  */
 package org.mule.runtime.api.artifact.semantic;
 
+import org.mule.runtime.api.artifact.sintax.ParameterValueDefinition;
+import org.mule.runtime.api.component.location.BaseLocation;
+
 public class SimpleParameterValue extends ParameterValue {
-  //
-  // boolean isLiteral();
-  //
-  // boolean isExpression();
-  //
-  // boolean isPlaceholder();
-  //
-  // boolean containsPlaceholder();
-  //
-  // String getRawValue();
+
+  private ParameterValueDefinition parameterValueDefinition;
+
+  public ParameterValueDefinition getParameterValueDefinition() {
+    return parameterValueDefinition;
+  }
+
+  public static SimpleParameterValueBuilder builder() {
+    return new SimpleParameterValueBuilder();
+  }
+
+  public static final class SimpleParameterValueBuilder {
+
+    private ParameterValueDefinition parameterValueDefinition;
+    private BaseLocation location;
+
+    private SimpleParameterValueBuilder() {}
+
+    public SimpleParameterValueBuilder withParameterValueDefinition(ParameterValueDefinition parameterValueDefinition) {
+      this.parameterValueDefinition = parameterValueDefinition;
+      return this;
+    }
+
+    public SimpleParameterValueBuilder withLocation(BaseLocation location) {
+      this.location = location;
+      return this;
+    }
+
+    public SimpleParameterValue build() {
+      SimpleParameterValue parameterValue = new SimpleParameterValue();
+      parameterValue.parameterValueDefinition = this.parameterValueDefinition;
+      parameterValue.location = this.location;
+      return parameterValue;
+    }
+  }
 
 }

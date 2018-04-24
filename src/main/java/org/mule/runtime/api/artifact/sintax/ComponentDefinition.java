@@ -17,6 +17,7 @@ import org.mule.runtime.api.component.ComponentIdentifier;
 public class ComponentDefinition {
 
   private SourceCodeLocation sourceCodeLocation;
+  // TODO change to symbol identifier and create another identifier for the one in the config
   private ComponentIdentifier identifier;
   private ParameterValueDefinition parameterValueDefinition;
   private List<ParameterDefinition> parameterDefinitions;
@@ -97,6 +98,7 @@ public class ComponentDefinition {
       componentDefinition.parameterDefinitions = this.parameterDefinitions;
       componentDefinition.childComponentDefinitions = this.childComponentDefinitions;
       componentDefinition.sourceCodeLocation = this.sourceCodeLocation;
+      componentDefinition.parameterValueDefinition = this.parameterValueDefinition;
       return componentDefinition;
     }
   }

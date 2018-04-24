@@ -16,7 +16,11 @@ public class Chain extends ComplexComponent {
     return chainModel;
   }
 
-  public static abstract class ChainBuilder extends Component.ComponentBuilder<ChainBuilder, Chain> {
+  public static ChainBuilder builder() {
+    return new ChainBuilder();
+  }
+
+  public static class ChainBuilder extends ComplexComponent.ComplexComponentBuilder<ChainBuilder, Chain> {
 
     private NestedChainModel chainModel;
 
