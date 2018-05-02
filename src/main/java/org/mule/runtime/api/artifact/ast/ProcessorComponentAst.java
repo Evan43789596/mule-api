@@ -4,8 +4,8 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.api.artifact.semantic;
+package org.mule.runtime.api.artifact.ast;
 
-public class ProcessorComponent extends Component {
+public class ProcessorComponentAst extends ComponentAst {
 
 }

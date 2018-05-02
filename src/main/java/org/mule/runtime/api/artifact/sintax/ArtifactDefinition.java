@@ -11,10 +11,10 @@ import java.util.List;
 
 public class ArtifactDefinition {
 
-  private List<ComponentDefinition> globalDefinitions;
+  private List<ComponentDefinition> rootDefinitions;
 
-  public List<ComponentDefinition> getGlobalDefinitions() {
-    return globalDefinitions;
+  public List<ComponentDefinition> getRootDefinitions() {
+    return rootDefinitions;
   }
 
   public static ArtifactDefinitionBuilder builder() {
@@ -23,23 +23,23 @@ public class ArtifactDefinition {
 
   public static final class ArtifactDefinitionBuilder {
 
-    private List<ComponentDefinition> globalDefinitions = new ArrayList<>();
+    private List<ComponentDefinition> rootDefinitions = new ArrayList<>();
 
     private ArtifactDefinitionBuilder() {}
 
-    public ArtifactDefinitionBuilder withGlobalDefinitions(List<ComponentDefinition> globalDefinitions) {
-      this.globalDefinitions = globalDefinitions;
+    public ArtifactDefinitionBuilder withRootDefinitions(List<ComponentDefinition> globalDefinitions) {
+      this.rootDefinitions = globalDefinitions;
       return this;
     }
 
-    public ArtifactDefinitionBuilder withGlobalDefinition(ComponentDefinition globalDefinition) {
-      this.globalDefinitions.add(globalDefinition);
+    public ArtifactDefinitionBuilder withRootDefinition(ComponentDefinition globalDefinition) {
+      this.rootDefinitions.add(globalDefinition);
       return this;
     }
 
     public ArtifactDefinition build() {
       ArtifactDefinition artifactDefinition = new ArtifactDefinition();
-      artifactDefinition.globalDefinitions = this.globalDefinitions;
+      artifactDefinition.rootDefinitions = this.rootDefinitions;
       return artifactDefinition;
     }
   }

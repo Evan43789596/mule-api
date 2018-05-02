@@ -4,11 +4,11 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.api.artifact.semantic;
+package org.mule.runtime.api.artifact.ast;
 
 import org.mule.runtime.api.meta.model.construct.ConstructModel;
 
-public class Construct extends ComplexComponent {
+public class ConstructAst extends ComplexComponentAst {
 
   private ConstructModel model;
 
@@ -16,29 +16,29 @@ public class Construct extends ComplexComponent {
     return model;
   }
 
-  public static ConstructBuilder builder() {
-    return new ConstructBuilder();
+  public static ConstructAstBuilder builder() {
+    return new ConstructAstBuilder();
   }
 
-  public static class ConstructBuilder extends ComplexComponent.ComplexComponentBuilder<ConstructBuilder, Construct> {
+  public static class ConstructAstBuilder extends ComplexComponentAstBuilder<ConstructAstBuilder, ConstructAst> {
 
     private ConstructModel model;
 
-    private ConstructBuilder() {}
+    private ConstructAstBuilder() {}
 
-    public ConstructBuilder withModel(ConstructModel constructModel) {
+    public ConstructAstBuilder withModel(ConstructModel constructModel) {
       this.model = constructModel;
       return this;
     }
 
     @Override
-    protected Construct newInstance() {
-      return new Construct();
+    protected ConstructAst newInstance() {
+      return new ConstructAst();
     }
 
     @Override
-    public Construct build() {
-      Construct construct = super.build();
+    public ConstructAst build() {
+      ConstructAst construct = super.build();
       construct.model = this.model;
       return construct;
     }

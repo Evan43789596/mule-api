@@ -21,6 +21,14 @@ public class ParameterIdentifierDefinition {
     return sourceCodeLocation;
   }
 
+  @Override
+  public String toString() {
+    return "{\"ParameterIdentifierDefinition\":{"
+        + "\"componentIdentifier\":" + componentIdentifier
+        + ", \"sourceCodeLocation\":" + sourceCodeLocation
+        + "}}";
+  }
+
   public static ParameterIdentifierDefinitionBuilder builder() {
     return new ParameterIdentifierDefinitionBuilder();
   }

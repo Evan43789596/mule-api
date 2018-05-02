@@ -60,6 +60,15 @@ class DefaultComponentIdentifier implements ComponentIdentifier, Serializable {
     return new DefaultComponentIdentifier.Builder().namespace(namespace).name(identifier).build();
   }
 
+  // TODO have in mind this is overriding a method that alrady exsited.
+  @Override
+  public String toString() {
+    return "{"
+        + "\"namespace\":\"" + namespace + "\""
+        + ", \"name\":\"" + name + "\""
+        + "}";
+  }
+
   public static class Builder implements ComponentIdentifier.Builder {
 
     private DefaultComponentIdentifier componentIdentifier = new DefaultComponentIdentifier();
@@ -120,11 +129,6 @@ class DefaultComponentIdentifier implements ComponentIdentifier, Serializable {
    */
   public static Builder builder() {
     return new Builder();
-  }
-
-  @Override
-  public String toString() {
-    return getNamespace().equals(CORE_PREFIX) ? getName() : getNamespace() + ":" + getName();
   }
 
 

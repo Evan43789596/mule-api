@@ -4,11 +4,11 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.api.artifact.semantic;
+package org.mule.runtime.api.artifact.ast;
 
 import org.mule.runtime.api.meta.model.operation.OperationModel;
 
-public class Operation extends ProcessorComponent {
+public class OperationAst extends ProcessorComponentAst {
 
   private OperationModel operationModel;
 
@@ -16,27 +16,27 @@ public class Operation extends ProcessorComponent {
     return operationModel;
   }
 
-  public static OperationBuilder builder() {
-    return new OperationBuilder();
+  public static OperationAstBuilder builder() {
+    return new OperationAstBuilder();
   }
 
-  public static class OperationBuilder extends Component.ComponentBuilder<OperationBuilder, Operation> {
+  public static class OperationAstBuilder extends ComponentAstBuilder<OperationAstBuilder, OperationAst> {
 
     private OperationModel operationModel;
 
-    private OperationBuilder() {}
+    private OperationAstBuilder() {}
 
-    protected Operation newInstance() {
-      return new Operation();
+    protected OperationAst newInstance() {
+      return new OperationAst();
     }
 
-    public OperationBuilder withOperationModel(OperationModel operationModel) {
+    public OperationAstBuilder withOperationModel(OperationModel operationModel) {
       this.operationModel = operationModel;
       return this;
     }
 
-    public Operation build() {
-      Operation operation = super.build();
+    public OperationAst build() {
+      OperationAst operation = super.build();
       operation.operationModel = operationModel;
       return operation;
     }

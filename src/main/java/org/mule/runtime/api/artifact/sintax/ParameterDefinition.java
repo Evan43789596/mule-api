@@ -24,6 +24,15 @@ public class ParameterDefinition {
     return parameterIdentifierDefinition;
   }
 
+  @Override
+  public String toString() {
+    return "{\"ParameterDefinition\":{"
+        + "\"sourceCodeLocation\":" + sourceCodeLocation
+        + ", \"parameterIdentifierDefinition\":" + parameterIdentifierDefinition
+        + ", \"parameterValueDefinition\":" + parameterValueDefinition
+        + "}}";
+  }
+
   public static ParameterDefinitionBuilder builder() {
     return new ParameterDefinitionBuilder();
   }

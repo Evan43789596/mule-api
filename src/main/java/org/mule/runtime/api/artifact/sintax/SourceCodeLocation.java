@@ -30,6 +30,21 @@ public class SourceCodeLocation {
     return endColumn;
   }
 
+  public String getFilename() {
+    return filename;
+  }
+
+  @Override
+  public String toString() {
+    return "{\"SourceCodeLocation\":{"
+        + "\"startLine\":\"" + startLine + "\""
+        + ", \"endLine\":\"" + endLine + "\""
+        + ", \"startColumn\":\"" + startColumn + "\""
+        + ", \"endColumn\":\"" + endColumn + "\""
+        + ", \"filename\":\"" + filename + "\""
+        + "}}";
+  }
+
   public static SourceCodeLocationBuilder builder() {
     return new SourceCodeLocationBuilder();
   }

@@ -4,26 +4,27 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.api.artifact.semantic;
+package org.mule.runtime.api.artifact.ast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.mule.runtime.api.artifact.sintax.ComponentDefinition;
+import org.mule.runtime.api.artifact.sintax.SourceCodeLocation;
 import org.mule.runtime.api.meta.model.source.SourceCallbackModel;
 
-public class SourceResponse {
+public class SourceResponseAst {
 
-  private List<Parameter> parameters;
-  private ComponentDefinition componentDefinition;
+  private List<ParameterAst> parameters;
   private SourceCallbackModel model;
+  private SourceCodeLocation sourceCodeLocation;
 
-  public List<Parameter> getParameters() {
+  public List<ParameterAst> getParameters() {
     return parameters;
   }
 
-  public ComponentDefinition getComponentDefinition() {
-    return componentDefinition;
+  public SourceCodeLocation getSourceCodeLocation() {
+    return sourceCodeLocation;
   }
 
   public SourceCallbackModel getModel() {
@@ -36,17 +37,17 @@ public class SourceResponse {
 
   public static class SourceResponseBuilder {
 
-    private List<Parameter> parameters = new ArrayList<>();
-    private ComponentDefinition componentDefinition;
+    private List<ParameterAst> parameters = new ArrayList<>();
     private SourceCallbackModel model;
+    private SourceCodeLocation sourceCodeLocation;
 
-    public SourceResponseBuilder withParameters(List<Parameter> parameters) {
+    public SourceResponseBuilder withParameters(List<ParameterAst> parameters) {
       this.parameters.addAll(parameters);
       return this;
     }
 
-    public SourceResponseBuilder withComponentDefinition(ComponentDefinition componentDefinition) {
-      this.componentDefinition = componentDefinition;
+    public SourceResponseBuilder withSourceCodeLocation(SourceCodeLocation sourceCodeLocation) {
+      this.sourceCodeLocation = sourceCodeLocation;
       return this;
     }
 
@@ -55,11 +56,11 @@ public class SourceResponse {
       return this;
     }
 
-    public SourceResponse build() {
-      SourceResponse instance = new SourceResponse();
+    public SourceResponseAst build() {
+      SourceResponseAst instance = new SourceResponseAst();
       instance.parameters = this.parameters;
-      instance.componentDefinition = this.componentDefinition;
       instance.model = this.model;
+      instance.sourceCodeLocation = sourceCodeLocation;
       return instance;
     }
 

@@ -4,32 +4,32 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.api.artifact.semantic;
+package org.mule.runtime.api.artifact.ast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ComplexComponent extends ProcessorComponent {
+public abstract class ComplexComponentAst extends ProcessorComponentAst {
 
-  List<Component> processorComponents;
+  List<ComponentAst> processorComponents;
 
-  public List<Component> getProcessorComponents() {
+  public List<ComponentAst> getProcessorComponents() {
     return processorComponents;
   }
 
-  ComplexComponent() {}
+  ComplexComponentAst() {}
 
-  public static abstract class ComplexComponentBuilder<T extends ComplexComponentBuilder, BuilderType extends ComplexComponent>
-      extends Component.ComponentBuilder<T, BuilderType> {
+  public static abstract class ComplexComponentAstBuilder<T extends ComplexComponentAstBuilder, BuilderType extends ComplexComponentAst>
+      extends ComponentAstBuilder<T, BuilderType> {
 
-    List<Component> processorComponents = new ArrayList<>();
+    List<ComponentAst> processorComponents = new ArrayList<>();
 
-    public ComplexComponentBuilder withProcessorComponents(List<Component> processorComponents) {
+    public ComplexComponentAstBuilder withProcessorComponents(List<ComponentAst> processorComponents) {
       this.processorComponents.addAll(processorComponents);
       return this;
     }
 
-    public ComplexComponentBuilder withProcessorComponent(Component processorComponent) {
+    public ComplexComponentAstBuilder withProcessorComponent(ComponentAst processorComponent) {
       this.processorComponents.add(processorComponent);
       return this;
     }

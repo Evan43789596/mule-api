@@ -15,6 +15,14 @@ public class ParameterValueDefinition {
     return sourceCodeLocation;
   }
 
+  @Override
+  public String toString() {
+    return "{\"ParameterValueDefinition\":{"
+        + "\"sourceCodeLocation\":" + sourceCodeLocation
+        + ", \"rawValue\":\"" + rawValue + "\""
+        + "}}";
+  }
+
   public String getRawValue() {
     return rawValue;
   }

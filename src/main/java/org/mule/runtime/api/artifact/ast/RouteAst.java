@@ -4,11 +4,11 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.api.artifact.semantic;
+package org.mule.runtime.api.artifact.ast;
 
 import org.mule.runtime.api.meta.model.nested.NestedRouteModel;
 
-public class Route extends ComplexComponent {
+public class RouteAst extends ComplexComponentAst {
 
   private NestedRouteModel model;
 
@@ -16,29 +16,29 @@ public class Route extends ComplexComponent {
     return model;
   }
 
-  public static RouteBuilder builder() {
-    return new RouteBuilder();
+  public static RouteAstBuilder builder() {
+    return new RouteAstBuilder();
   }
 
-  public static class RouteBuilder extends ComplexComponent.ComplexComponentBuilder<Route.RouteBuilder, Route> {
+  public static class RouteAstBuilder extends ComplexComponentAstBuilder<RouteAstBuilder, RouteAst> {
 
     private NestedRouteModel model;
 
-    private RouteBuilder() {}
+    private RouteAstBuilder() {}
 
-    public RouteBuilder withModel(NestedRouteModel routeModel) {
+    public RouteAstBuilder withModel(NestedRouteModel routeModel) {
       this.model = routeModel;
       return this;
     }
 
     @Override
-    public Route newInstance() {
-      return new Route();
+    public RouteAst newInstance() {
+      return new RouteAst();
     }
 
     @Override
-    public Route build() {
-      Route route = super.build();
+    public RouteAst build() {
+      RouteAst route = super.build();
       route.model = this.model;
       return route;
     }

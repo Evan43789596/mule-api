@@ -4,12 +4,12 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.api.artifact.semantic;
+package org.mule.runtime.api.artifact.ast;
 
 import org.mule.metadata.api.model.ObjectType;
 
 //TODO parameters of this kind of objects are not propertly represented in the semantics. We need those parameters.
-public class Object extends Component {
+public class ObjectAst extends ComponentAst {
 
   private ObjectType objectType;
 
@@ -17,25 +17,33 @@ public class Object extends Component {
     return objectType;
   }
 
-  public static ObjectBuilder builder() {
-    return new ObjectBuilder();
+  @Override
+  public String toString() {
+    return "{\"Object\":"
+        + super.toString()
+        + ", \"objectType\":" + objectType
+        + "}";
   }
 
-  public static class ObjectBuilder extends ComponentBuilder<ObjectBuilder, Object> {
+  public static ObjectAstBuilder builder() {
+    return new ObjectAstBuilder();
+  }
+
+  public static class ObjectAstBuilder extends ComponentAstBuilder<ObjectAstBuilder, ObjectAst> {
 
     private ObjectType objectType;
 
-    public ObjectBuilder withObjectType(ObjectType objectType) {
+    public ObjectAstBuilder withObjectType(ObjectType objectType) {
       this.objectType = objectType;
       return this;
     }
 
-    protected Object newInstance() {
-      return new Object();
+    protected ObjectAst newInstance() {
+      return new ObjectAst();
     }
 
-    public Object build() {
-      Object instance = super.build();
+    public ObjectAst build() {
+      ObjectAst instance = super.build();
       instance.objectType = this.objectType;
       return instance;
     }

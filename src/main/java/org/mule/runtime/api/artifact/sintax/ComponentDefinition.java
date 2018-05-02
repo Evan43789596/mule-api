@@ -43,6 +43,19 @@ public class ComponentDefinition {
     return identifier;
   }
 
+  @Override
+  public String toString() {
+    return "{\"ComponentDefinition\":{"
+        + "\"sourceCodeLocation\":" + sourceCodeLocation
+        + ", \"identifier\":" + identifier
+        + ", \"parameterValueDefinition\": " + parameterValueDefinition
+        + ", \"parameterDefinitions\": ["
+        + parameterDefinitions.stream().map(ParameterDefinition::toString).reduce((a, b) -> a + " , " + b).orElse("")
+        + "], \"childComponentDefinitions\": ["
+        + childComponentDefinitions.stream().map(ComponentDefinition::toString).reduce((a, b) -> a + " , " + b).orElse("")
+        + "]}}";
+  }
+
   public static ComponentDefinitionBuilder builder() {
     return new ComponentDefinitionBuilder();
   }

@@ -4,12 +4,17 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package org.mule.runtime.api.artifact.semantic;
+package org.mule.runtime.api.artifact.ast;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface HasParameters {
+import org.mule.runtime.api.component.ComponentIdentifier;
 
-  List<Parameter> getParameters();
+public interface HasParametersAst {
+
+  List<ParameterAst> getParameters();
+
+  Optional<ParameterAst> getParameter(ComponentIdentifier componentIdentifier);
 
 }
