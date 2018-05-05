@@ -17,8 +17,7 @@ import java.util.Optional;
 
 import org.mule.runtime.api.component.ComponentIdentifier;
 
-public class ArtifactAst implements HasParametersAst
-{
+public class ArtifactAst implements HasParametersAst {
 
   // TODO add artifact type like module/mule/policy, etc
   // TODO refactor to reuse code between this and ComponentAst

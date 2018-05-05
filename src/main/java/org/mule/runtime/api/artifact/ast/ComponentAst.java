@@ -19,8 +19,7 @@ import org.mule.runtime.api.component.ComponentIdentifier;
 import org.mule.runtime.api.component.location.ComponentLocation;
 
 //TODO remove HasParameters from this component
-public abstract class ComponentAst implements HasParametersAst
-{
+public abstract class ComponentAst implements HasParametersAst {
 
   ComponentIdentifier componentIdentifier;
   Map<ComponentIdentifier, ParameterAst> parametersMap = new HashMap<>();

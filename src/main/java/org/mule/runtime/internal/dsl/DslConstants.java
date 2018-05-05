@@ -78,6 +78,11 @@ public interface DslConstants {
   String SUBFLOW_ELEMENT_IDENTIFIER = "sub-flow";
 
   /**
+   * The identifier name of a {@code flow}
+   */
+  String OPERATION_ELEMENT_IDENTIFIER = "operation";
+
+  /**
    * The name of the 'name' attribute of a DSL element
    */
   String NAME_ATTRIBUTE_NAME = "name";

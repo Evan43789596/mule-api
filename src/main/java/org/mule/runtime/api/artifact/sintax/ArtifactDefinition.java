@@ -9,6 +9,7 @@ package org.mule.runtime.api.artifact.sintax;
 import java.util.ArrayList;
 import java.util.List;
 
+//TODO this must be internal and not part of the API since the transformer between this and the AST is specific per DSL implementation.
 public class ArtifactDefinition {
 
   private List<ComponentDefinition> rootDefinitions;
