@@ -23,6 +23,11 @@ public interface DslConstants {
   String CORE_PREFIX = "mule";
 
   /**
+   * This is the namespace prefix for core elements in the configuration.
+   */
+  String MODULE_PREFIX = "module";
+
+  /**
    * Format mask for the default location of a schema
    */
   String DEFAULT_NAMESPACE_URI_MASK = "http://www.mulesoft.org/schema/mule/%s";
@@ -35,7 +40,17 @@ public interface DslConstants {
   /**
    * Namespace for Mule core elements
    */
+  String MODULE_NAMESPACE = format(DEFAULT_NAMESPACE_URI_MASK, MODULE_PREFIX);
+
+  /**
+   * Namespace for Mule core elements
+   */
   String CORE_SCHEMA_LOCATION = format("%s/%s/%s.xsd", CORE_NAMESPACE, "current", CORE_PREFIX);
+
+  /**
+   * Namespace for Mule core elements
+   */
+  String MODULE_SCHEMA_LOCATION = format("%s/%s/%s.xsd", MODULE_NAMESPACE, "current", "mule-module.xsd");
 
   /**
    * This is the namespace prefix for core domain elements in the configuration.
