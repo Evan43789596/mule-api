@@ -6,19 +6,11 @@
  */
 package org.mule.runtime.api.artifact.ast;
 
-import org.mule.runtime.api.meta.model.connection.ConnectionProviderModel;
-
 //TODO refactor with Configuration to create a single abstract class
 public class ParameterComponentAst extends ComponentAst {
 
   public static ParameterComponentAstBuilder builder() {
     return new ParameterComponentAstBuilder();
-  }
-
-  private ConnectionProviderModel model;
-
-  public ConnectionProviderModel getModel() {
-    return model;
   }
 
   public static class ParameterComponentAstBuilder

@@ -9,20 +9,22 @@ package org.mule.runtime.api.artifact.ast;
 import static com.google.common.collect.ImmutableList.copyOf;
 import static java.util.Optional.ofNullable;
 
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.mule.runtime.api.artifact.sintax.SourceCodeLocation;
 import org.mule.runtime.api.component.ComponentIdentifier;
 import org.mule.runtime.api.component.location.ComponentLocation;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+
 //TODO remove HasParameters from this component
 public abstract class ComponentAst implements HasParametersAst {
 
   ComponentIdentifier componentIdentifier;
-  Map<ComponentIdentifier, ParameterAst> parametersMap = new HashMap<>();
+  Multimap<ComponentIdentifier, ParameterAst> parametersMap = ArrayListMultimap.create();
   ComponentLocation componentLocation;
   SourceCodeLocation sourceCodeLocation;
 
@@ -39,7 +41,12 @@ public abstract class ComponentAst implements HasParametersAst {
   }
 
   public Optional<ParameterAst> getParameter(ComponentIdentifier componentIdentifier) {
-    return ofNullable(parametersMap.get(componentIdentifier));
+    Collection<ParameterAst> values = parametersMap.get(componentIdentifier);
+    return ofNullable(values.isEmpty() ? null : values.iterator().next());
+  }
+
+  public List<ParameterAst> getParameters(ComponentIdentifier componentIdentifier) {
+    return (List<ParameterAst>) parametersMap.get(componentIdentifier);
   }
 
   @Override
@@ -49,7 +56,7 @@ public abstract class ComponentAst implements HasParametersAst {
 
   public static abstract class ComponentAstBuilder<T extends ComponentAstBuilder, BuilderType extends ComponentAst> {
 
-    private Map<ComponentIdentifier, ParameterAst> parametersMap = new HashMap<>();
+    private Multimap<ComponentIdentifier, ParameterAst> parametersMap = ArrayListMultimap.create();
     private ComponentLocation componentLocation;
     private SourceCodeLocation sourceCodeLocation;
     private ComponentIdentifier componentIdentifier;
